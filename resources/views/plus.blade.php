@@ -7,12 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="Style.css">
     <title>Document</title>
-    <h1>Nouvelle vue qui dit bonjour</h1>
+
 
 </head>
 <body>
-mdp {{ $motdepasse }}
-Bonjour {{ $username }}
+Resultat : {{$nmb1}}+ {{$nmb2}} = {{$nmb1 + $nmb2}}
 </body>
 </html>
-
