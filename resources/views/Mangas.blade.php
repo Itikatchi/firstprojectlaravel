@@ -12,6 +12,10 @@
 </head>
 <body>
 <h2>Les mangas</h2>
+<nav>
+    <a href="/Mangas/Create">Create</a>
+
+</nav>
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>

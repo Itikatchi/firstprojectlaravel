@@ -1,3 +1,4 @@
+
 *{
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -21,11 +22,39 @@ h2{
     text-align: center;
 
 }
+nav{
+    justify-content: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    background: #4FC3A1;
+    color: white;
+}
+
 img{
     width : 150px;
     height : 200px;
 }
-
+#container{
+    display: flex;
+    justify-content: center;
+}
+input{
+    height: 25px;
+    width: 350px;
+}
+#TitreCreate{
+    display: flex;
+    justify-content: center;
+}
+textarea{
+    width: 350px;
+}
+button{
+    width: 150px;
+}
+#retourbutton{
+    justify-content: right;
+}
 /* Table Styles */
 
 .table-wrapper{
@@ -135,3 +164,4 @@ img{
         text-align: center;
     }
 }
+

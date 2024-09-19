@@ -17,10 +17,13 @@ Route::get('/Mangas', function () {
     $all = App\Models\Manga::all();
     return view('Mangas',compact('all'));
 });
+Route::get('/Mangas/Create', function () {
+    return view('Create');
+});
+
+
 Route::get('/Mangas/{id}', function ($id) {
     $find = App\Models\Manga::find($id);
     return view('MangaUnique',compact('find'));
 });
-Route::get('/Manga/Create', function () {
-    return view('Create');
-});
+
