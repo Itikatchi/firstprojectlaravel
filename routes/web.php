@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Manga;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,7 +15,7 @@ Route::get('/plus/{nmb1}/{nmb2}', function ($nmb1, $nmb2) {
     return view('plus',compact('nmb1','nmb2'));
 });
 Route::get('/Mangas', function () {
-    $all = App\Models\Manga::all();
+    $all = Manga::all();
     return view('Mangas',compact('all'));
 });
 Route::get('/Mangas/Create', function () {
@@ -23,10 +24,10 @@ Route::get('/Mangas/Create', function () {
 
 
 Route::get('/Mangas/{id}', function ($id) {
-    $find = App\Models\Manga::find($id);
+    $find = Manga::find($id);
     return view('MangaUnique',compact('find'));
 });
-Route::post('/Mangas', function () {
+Route::post('/Mangas/', function () {
     $validate = request()->validate([
         'manga_price' => 'integer',
         'manga_name' => 'required',
@@ -34,6 +35,7 @@ Route::post('/Mangas', function () {
         'manga_link' =>  'required',
 
     ]);
+
     $m = new Manga;
     $m -> price = request('manga_price');
     $m -> name = request('manga_name');
