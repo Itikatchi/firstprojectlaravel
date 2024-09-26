@@ -26,4 +26,22 @@ Route::get('/Mangas/{id}', function ($id) {
     $find = App\Models\Manga::find($id);
     return view('MangaUnique',compact('find'));
 });
+Route::post('/Mangas', function () {
+    $validate = request()->validate([
+        'manga_price' => 'integer',
+        'manga_name' => 'required',
+        'description' => 'required',
+        'manga_link' =>  'required',
 
+    ]);
+    $m = new Manga;
+    $m -> price = request('manga_price');
+    $m -> name = request('manga_name');
+    $m -> description = request('description');
+    $m -> image = request('manga_link');
+    $m -> autor = request('manga_autor');
+    $m -> dateparution = request('manga_parution');
+    $m -> save();
+
+    return redirect('/Mangas/'.$m->id);
+});
