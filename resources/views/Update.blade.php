@@ -13,36 +13,37 @@
 <body>
 <div id="TitreCreate"><h1>Creation d'un nouveau manga</h1></div>
 <div id="container">
-<form action="/Mangas/" method="post">
+<form action="/Mangas/{{$update->id}}" method="post">
     @csrf
+    @method('patch')
     <label>Nom du manga :</label><br>
-    <input required type="text" placeholder="Nom du manga" name="manga_name">
+    <input value="{{$update->name}}" required type="text" placeholder="Nom du manga" name="manga_name">
     @error('manga_name')<style>.error {background: red;}</style><div class="error">{{$message}} </div>@enderror
     <br><br>
 
     <label>Prix du manga :</label><br>
-    <input required type="number " name="manga_price" placeholder="Prix du manga">
+    <input value="{{$update->price}}" required type="number " name="manga_price" placeholder="Prix du manga">
     @error('manga_price')<style>.error {background: red;}</style><div class="error">{{$message}} </div>@enderror
     <br><br>
 
     <label>Description du manga :</label>
     <br>
-    <textarea required id="description" name="description" rows="5" cols="33" placeholder="Votre description"></textarea><br><br>
+    <textarea required id="description" name="description" rows="5" cols="33" placeholder="Votre description">{{$update->description}}</textarea><br><br>
     @error('description')<style>.error {background: red;}</style><div class="error">{{$message}} </div>@enderror
     <br>
 
     <label>Lien de l'image :</label><br>
-    <input required type="text" placeholder="Lien de l'image" name="manga_link">
+    <input value="{{$update->image}}" required type="text" placeholder="Lien de l'image" name="manga_link">
     @error('manga_link')<style>.error {background: red;}</style><div class="error">{{$message}} </div>@enderror
     <br><br>
 
     <label>Auteur :</label><br>
-    <input required type="text" placeholder="Auteur" name="manga_autor">
+    <input value="{{$update->autor}}" required type="text" placeholder="Auteur" name="manga_autor">
     @error('manga_autor')<style>.error {background: red;}</style><div class="error">{{$message}} </div>@enderror
     <br><br>
 
     <label>Date de sortie :</label><br>
-    <input required type="date" placeholder="Format (yyyy-mm-dd)" name="manga_parution">
+    <input value="{{$update->dateparution}}" required type="date" placeholder="Format (yyyy-mm-dd)" name="manga_parution">
     @error('manga_parution')<style>.error {background: red;}</style><div class="error">{{$message}} </div>@enderror
     <br><br>
 

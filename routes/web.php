@@ -14,36 +14,17 @@ Route::get('/home', function () {
 Route::get('/plus/{nmb1}/{nmb2}', function ($nmb1, $nmb2) {
     return view('plus',compact('nmb1','nmb2'));
 });
-Route::get('/Mangas', function () {
-    $all = Manga::all();
-    return view('Mangas',compact('all'));
-});
-Route::get('/Mangas/Create', function () {
-    return view('Create');
-});
 
+Route::get('/Mangas', [\App\Http\Controllers\MangaContoller::class, 'all']);
 
-Route::get('/Mangas/{id}', function ($id) {
-    $find = Manga::find($id);
-    return view('MangaUnique',compact('find'));
-});
-Route::post('/Mangas/', function () {
-    $validate = request()->validate([
-        'manga_price' => 'integer',
-        'manga_name' => 'required',
-        'description' => 'required',
-        'manga_link' =>  'required',
+Route::get('/Mangas/Create', [\App\Http\Controllers\MangaContoller::class, 'creation']);
 
-    ]);
+Route::get('/Mangas/{id}/edit', [\App\Http\Controllers\MangaContoller::class, 'edit']);
 
-    $m = new Manga;
-    $m -> price = request('manga_price');
-    $m -> name = request('manga_name');
-    $m -> description = request('description');
-    $m -> image = request('manga_link');
-    $m -> autor = request('manga_autor');
-    $m -> dateparution = request('manga_parution');
-    $m -> save();
+Route::get('/Mangas/{id}', [\App\Http\Controllers\MangaContoller::class, 'find']);
 
-    return redirect('/Mangas/'.$m->id);
-});
+Route::post('/Mangas/', [\App\Http\Controllers\MangaContoller::class, 'create']);
+
+Route::patch('/Mangas/{id}/', [\App\Http\Controllers\MangaContoller::class, 'update']);
+
+Route::delete('/Mangas/{id}', [\App\Http\Controllers\MangaContoller::class, 'delete']);

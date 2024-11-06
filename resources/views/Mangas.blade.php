@@ -15,6 +15,7 @@
 <nav>
     <a href="/Mangas/Create">Create</a>
 
+
 </nav>
 <div class="table-wrapper">
     <table class="fl-table">
@@ -27,6 +28,8 @@
             <th>Auteur</th>
             <th>Date de parution</th>
             <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -39,6 +42,15 @@
         <td>{{$row-> autor}}</td>
         <td>{{$row-> dateparution}}</td>
         <td><a href="/Mangas/{{$row->id}}">Details</a></td>
+        <td><a href="/Mangas/{{$row->id}}/edit">Edit</a></td>
+        <td>
+            <form method="post" action="/Mangas/{{$row->id}}">
+                @csrf
+                @method('delete')
+                <a></a>
+                <input type="submit" value="Delete">
+            </form>
+        </td>
     </tr>
 
 @endforeach
